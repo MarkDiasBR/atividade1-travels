@@ -2,7 +2,10 @@ import { query } from "express";
 import { dbGetTravels } from "../repositories/travels.repository.js";
 
 export async function getTravels(req, res){
-    const { page, name } = req.query;
+    let { page, name } = req.query;
+    if (!page) page = 1
+    if (!name) name = '_'
+
     console.log( page, name )
 
     try {
